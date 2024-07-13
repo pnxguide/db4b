@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 
+#include "../catalog/catalog.hpp"
 #include "operator.hpp"
 
 std::vector<std::string> get_column_names(std::string table_path) {
@@ -21,14 +22,17 @@ uint64_t get_table_size(std::string table_path) {
             row_count++;
         }
         table_file.close();
-    } 
+    }
 
     return row_count;
 }
 
 OpScan::OpScan(std::string table_name) {
-    this->table_path = "./db/" + table_name + ".4b";
-    this->table_row_count = get_table_size(this->table_path);
+    Catalog &catalog = Catalog::get_instance();
+
+    //  "./db/" + table_name + ".4b";
+    this->table_path = catalog.get_table_path(this->table_name);
+    this->table_row_count = catalog.get_table_row_count(this->table_name);
     this->current_row = 1;
 }
 

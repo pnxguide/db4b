@@ -12,6 +12,7 @@ std::string process_query(std::string q) {
     // Create a plan
     QueryPlan *plan = new QueryPlan(q);
     // Execute the plan
+    uint64_t result_count = 0;
     std::string final_output = "";
     std::vector<std::string> outputs = plan->root->emit();
     while (outputs.size() != 0) {
@@ -23,9 +24,13 @@ std::string process_query(std::string q) {
         formatted_output += outputs.back();
         // Append to the final output
         final_output += formatted_output + "\n";
+        result_count++;
         // Emit more
         outputs = plan->root->emit();
     }
+    final_output += "(" + std::to_string(result_count) + " rows)" + "\n";
+    // Free allocated memory for the plan
+    delete plan;
     // Return the final output
     return final_output;
 }
@@ -46,7 +51,9 @@ int main() {
             std::cout << eng_to_braille("An error has occurred! Perhaps, the syntax is error").c_str() << std::endl;
         }
         // Display the output in Braille
-        std::cout << eng_to_braille(output).c_str() << std::endl;
+        std::cout << output.c_str() << std::endl;
+        // // Display the output in Braille
+        // std::cout << eng_to_braille(output).c_str() << std::endl;
     }
     return 0;
 }
