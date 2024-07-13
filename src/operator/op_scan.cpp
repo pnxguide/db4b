@@ -18,7 +18,7 @@ uint64_t get_table_size(std::string table_path) {
     std::string line;
     std::ifstream table_file(table_path);
     if (table_file.is_open()) {
-        while (getline(table_file, line)) {
+        while (std::getline(table_file, line)) {
             row_count++;
         }
         table_file.close();
@@ -30,7 +30,6 @@ uint64_t get_table_size(std::string table_path) {
 OpScan::OpScan(std::string table_name) {
     Catalog &catalog = Catalog::get_instance();
 
-    //  "./db/" + table_name + ".4b";
     this->table_path = catalog.get_table_path(this->table_name);
     this->table_row_count = catalog.get_table_row_count(this->table_name);
     this->current_row = 1;

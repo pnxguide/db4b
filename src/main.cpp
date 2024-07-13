@@ -7,6 +7,7 @@
 
 #include "planner/query_plan.hpp"
 #include "util/braille.hpp"
+#include "catalog/catalog.hpp"
 
 std::string process_query(std::string q) {
     // Create a plan
@@ -36,6 +37,12 @@ std::string process_query(std::string q) {
 }
 
 int main() {
+    // // Initialize the catalog
+    Catalog &catalog = Catalog::get_instance();
+    catalog.recover_catalog();
+
+    catalog.print_all();
+
     while (true) {
         // Print the cursor
         std::cout << "😎 ";
