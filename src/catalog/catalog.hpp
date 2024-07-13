@@ -31,7 +31,13 @@ class Catalog {
 
     bool create_table(std::string table_name, std::vector<std::string> columns);
     bool drop_table(std::string table_name);
-    bool import_table(std::string table_name, std::string table_path);
+    // Optional + add the flag method
+    // bool import_table(std::string table_name, std::string table_path);
+
+    // Insert at the end
+    bool insert_tuple(std::string table_name, std::vector<std::string> tuple);
+    // TODO: Flag method
+    bool delete_tuple(std::string table_name, uint64_t tuple_sequence);
 
     std::string get_table_path(std::string table_name);
     uint64_t get_table_row_count(std::string table_name);

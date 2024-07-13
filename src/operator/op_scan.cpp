@@ -32,5 +32,9 @@ std::vector<std::string> OpScan::emit() {
         tuple.push_back(line);
         this->current_row++;
     }
+    // If not active
+    if (tuple[0] == "0") {
+        tuple = {};
+    }
     return tuple;
 }

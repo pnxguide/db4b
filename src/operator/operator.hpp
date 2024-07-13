@@ -51,3 +51,13 @@ class OpDropTable : Operator {
     OpDropTable(std::string table_name);
     std::vector<std::string> emit();
 };
+
+class OpInsert : Operator {
+   public:
+    std::string table_name;
+    std::vector<std::string> tuple;
+    bool is_done;
+
+    OpInsert(std::string table_name, std::vector<std::string> tuple);
+    std::vector<std::string> emit();
+};

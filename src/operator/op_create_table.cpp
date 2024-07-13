@@ -15,11 +15,11 @@ std::vector<std::string> OpCreateTable::emit() {
         tuple = {""};
         Catalog &catalog = Catalog::get_instance();
         if (catalog.create_table(this->table_name, this->columns)) {
-            tuple[0] =
-                "The table " + this->table_name + " has created successfully!";
+            tuple[0] = "The table " + this->table_name +
+                       " has been created successfully!";
         } else {
             tuple[0] = "The table " + this->table_name +
-                       " has not successfully created!";
+                       " has not been successfully created!";
         }
         this->is_done = true;
     }

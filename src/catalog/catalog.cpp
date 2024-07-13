@@ -1,11 +1,11 @@
 #include "catalog.hpp"
 
+#include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <fstream>
 #include <ranges>
-#include <string_view>
 #include <set>
+#include <string_view>
 
 bool Catalog::recover_catalog() {
     // Reset the catalog
@@ -32,7 +32,7 @@ bool Catalog::recover_catalog() {
             new_table.row_count = std::stoull(tokens[2]);
             new_table.column_count = std::stoull(tokens[3]);
             for (int i = 0; i < new_table.column_count; i++) {
-                new_table.column_names.push_back(tokens[4+i]);
+                new_table.column_names.push_back(tokens[4 + i]);
             }
             this->tables.push_back(new_table);
         }
@@ -67,7 +67,6 @@ bool Catalog::create_table(std::string table_name,
     // Table name must not be illegal (alphabet only)
     for (char c : table_name) {
         if (std::isalpha(c) || c == '_') {
-            
         } else {
             return false;
         }
@@ -101,7 +100,7 @@ bool Catalog::create_table(std::string table_name,
     for (int i = 0; i < new_table.column_count - 1; i++) {
         new_db_file << new_table.column_names[i] << "|";
     }
-    new_db_file << new_table.column_names[new_table.column_count - 1] << "\n";
+    new_db_file << new_table.column_names.back() << "\n";
     // Close the file
     new_db_file.close();
     // Persist catalog
@@ -124,6 +123,66 @@ bool Catalog::drop_table(std::string table_name) {
         }
     }
     // Return
+    return false;
+}
+
+bool Catalog::insert_tuple(std::string table_name,
+                           std::vector<std::string> tuple) {
+    for (TableInfo table : this->tables) {
+        // Found the table
+        if (table.table_name == table_name) {
+            // Check if the column sizes are the same
+            if (table.column_count != tuple.size()) {
+                return false;
+            }
+            // Create the db file
+            std::ofstream db_file;
+            // Open the file
+            db_file.open(table.access_path, std::ios::app);
+            // Write the "active" flag
+            db_file << 1 << "|";
+            // Write the tuple
+            for (int i = 0; i < tuple.size() - 1; i++) {
+                db_file << tuple[i] << "|";
+            }
+            db_file << tuple.back() << "\n";
+            // Close the file
+            db_file.close();
+            // Return
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Catalog::delete_tuple(std::string table_name, uint64_t tuple_sequence) {
+    for (TableInfo table : this->tables) {
+        // Found the table
+        if (table.table_name == table_name) {
+            // Create the db file
+            std::fstream db_file(table.access_path,
+                                 std::fstream::in | std::fstream::out);
+            // Open the file
+            uint64_t current_sequence = 0;
+            if (db_file.is_open()) {
+                while (!db_file.eof()) {
+                    if (db_file.get() == '\n') {
+                        current_sequence++;
+                        if (current_sequence == (tuple_sequence + 1)) {
+                            db_file.put('0');
+                            break;
+                        }
+                    }
+                }
+                // Close the file
+                db_file.close();
+            } else {
+                return false;
+            }
+            // Return
+            return true;
+        }
+    }
     return false;
 }
 
