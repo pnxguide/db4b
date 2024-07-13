@@ -12,9 +12,8 @@ The "just-workable" database management system for blinds. Designated to be the 
 ## SQL Coverage
 - [X] CREATE TABLE
 - [X] DROP TABLE
-- [ ] Common data manipulations
-    - [ ] Projection
-    - [ ] Filter
+- [X] Common data manipulations
+    - [X] Projection
 - [X] No Join
 - [X] No Subquery
 

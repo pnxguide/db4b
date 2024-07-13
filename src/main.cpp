@@ -19,13 +19,13 @@ std::string process_query(std::string q) {
     std::vector<std::string> outputs = plan->root->emit();
     while (outputs.size() != 0) {
         // Format the output
-        std::string formatted_output = "| ";
+        std::string formatted_output = "";
         for (int i = 0; i < outputs.size() - 1; i++) {
             formatted_output += outputs[i] + " | ";
         }
         formatted_output += outputs.back();
         // Append to the final output
-        final_output += formatted_output + " |\n";
+        final_output += formatted_output + "\n";
         result_count++;
         // Emit more
         outputs = plan->root->emit();

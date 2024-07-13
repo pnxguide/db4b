@@ -7,7 +7,8 @@ all:
 		src/operator/*.cpp \
 		src/planner/*.cpp \
 		src/util/*.cpp \
-		src/main.cpp;
+		src/main.cpp \
+		-DBLIND;
 
 clean:
 	rm -rf bin/*.*
