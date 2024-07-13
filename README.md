@@ -7,7 +7,7 @@ The "workable" database management system for blinds. Designated to be the first
 ## Key Features
 - Building tables from eco-friendly wood veneers
 - Add more extensions with galvanized square steels
-- Use the eagle, Little John's best friend, to deliver queries
+- Use the eagle, Little John's best friend, to deliver SQL queries
 
 ## SQL Coverage
 - [ ] CREATE TABLE
