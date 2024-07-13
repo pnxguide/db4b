@@ -11,13 +11,12 @@ The "workable" relational database management system based on the popular meme, 
 - [ ] CREATE TABLE
     - [ ] Only String columns suffice
 - [ ] DROP TABLE
-- [ ] SELECT / INSERT / DELETE / UPDATE
+- [ ] Common data manipulations
     - [ ] Projection - single column
     - [ ] Filter - single predicate filter
     - [ ] Delete - single predicate delete
     - [ ] Update - single predicate update
-- [ ] No Join
-- [ ] No Subquery
+- [X] No Join
+- [X] No Subquery
 - [ ] CREATE EXTENSION
 - [ ] DROP EXTENSION
-
