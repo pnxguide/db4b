@@ -17,3 +17,13 @@ class OpScan : Operator {
     OpScan(std::string table_name);
     std::vector<std::string> emit();
 };
+
+class OpCreateTable : Operator {
+   public:
+    std::string table_name;
+    std::vector<std::string> columns;
+    
+    OpCreateTable(std::string table_name, std::vector<std::string> columns);
+    std::vector<std::string> emit();
+};
+

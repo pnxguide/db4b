@@ -38,6 +38,7 @@ OpScan::OpScan(std::string table_name) {
 std::vector<std::string> OpScan::emit() {
     std::vector<std::string> tuple = {};
     if (this->current_row < this->table_row_count) {
+        // FIXME:
         tuple = {"hello", "annaa", "bobby", "emmyi"};
         this->current_row++;
     }
