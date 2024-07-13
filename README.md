@@ -19,3 +19,7 @@ The "just-workable" database management system for blinds. Designated to be the 
     - [ ] Update
 - [X] No Join
 - [X] No Subquery
+
+## Namings are cursed
+- The "Catalog" seems to be both storage manager and catalog at the same time (or should we call it catrage manager?)
+- The "Planner" seems to be both parser and planner at the same time (or should we call it planser?)
