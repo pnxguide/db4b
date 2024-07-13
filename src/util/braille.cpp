@@ -57,7 +57,7 @@ std::string eng_to_braille(std::string eng) {
     };
     // Convert to Braille
     std::string braille = "";
-    for (int i = 0; i < eng.size(); i++) {
+    for (int i = 0; i < eng.length(); i++) {
         char cur_char = std::toupper(eng[i]);
         if (dict.contains(cur_char)) {
             braille += dict[cur_char];

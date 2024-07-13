@@ -5,18 +5,8 @@
 #include <string>
 #include <vector>
 
-#include "operator/operator.hpp"
+#include "planner/query_plan.hpp"
 #include "util/braille.hpp"
-
-class QueryPlan {
-   public:
-    std::vector<void *> args;
-    Operator *root;
-
-    QueryPlan(std::string q) {
-        // TODO: Implement this
-    }
-};
 
 std::string process_query(std::string q) {
     // Create a plan
