@@ -5,6 +5,7 @@
 #include <fstream>
 #include <ranges>
 #include <string_view>
+#include <set>
 
 bool Catalog::recover_catalog() {
     // Reset the catalog
@@ -79,6 +80,14 @@ bool Catalog::create_table(std::string table_name,
     }
     // If columns is empty, don't create the table
     if (columns.size() == 0) {
+        return false;
+    }
+    // No duplicated column names
+    std::set<std::string> unique_set;
+    for (std::string s : columns) {
+        unique_set.insert(s);
+    }
+    if (unique_set.size() < columns.size()) {
         return false;
     }
     // Register

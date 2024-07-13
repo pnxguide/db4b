@@ -24,6 +24,7 @@ class OpCreateTable : Operator {
    public:
     std::string table_name;
     std::vector<std::string> columns;
+    bool is_done;
     
     OpCreateTable(std::string table_name, std::vector<std::string> columns);
     std::vector<std::string> emit();
@@ -32,6 +33,7 @@ class OpCreateTable : Operator {
 class OpDropTable : Operator {
    public:
     std::string table_name;
+    bool is_done;
     
     OpDropTable(std::string table_name);
     std::vector<std::string> emit();

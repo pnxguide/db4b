@@ -1,5 +1,5 @@
 #include "query_plan.hpp"
 
 QueryPlan::QueryPlan(std::string query) {
-    this->root = (Operator *)(new OpScan("sample"));
+    this->root = (Operator *)(new OpDropTable("happy"));
 }
