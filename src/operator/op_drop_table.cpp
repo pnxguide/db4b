@@ -15,10 +15,10 @@ std::vector<std::string> OpDropTable::emit() {
         Catalog &catalog = Catalog::get_instance();
         if (catalog.drop_table(this->table_name)) {
             tuple[0] =
-                "The table " + this->table_name + " has dropped successfully!";
+                "The table " + this->table_name + " has been dropped successfully!";
         } else {
             tuple[0] = "The table " + this->table_name +
-                       " has not successfully dropped!";
+                       " has not been successfully dropped!";
         }
         this->is_done = true;
     }

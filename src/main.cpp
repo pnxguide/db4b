@@ -30,7 +30,12 @@ std::string process_query(std::string q) {
         // Emit more
         outputs = plan->root->emit();
     }
-    final_output += "(" + std::to_string(result_count) + " rows)" + "\n";
+    // Add the result counter
+    if (result_count == 1) {
+        final_output += "(" + std::to_string(result_count) + " row)" + "\n";
+    } else {
+        final_output += "(" + std::to_string(result_count) + " rows)" + "\n";
+    }
     // Free allocated memory for the plan
     delete plan;
     // Return the final output
@@ -69,10 +74,10 @@ int main() {
                        .c_str()
                 << std::endl;
         }
-        // // Display the output in English
-        // std::cout << output.c_str() << std::endl;
-        // Display the output in Braille
-        std::cout << eng_to_braille(output).c_str() << std::endl;
+        // Display the output in English
+        std::cout << output.c_str() << std::endl;
+        // // Display the output in Braille
+        // std::cout << eng_to_braille(output).c_str() << std::endl;
     }
     return 0;
 }
