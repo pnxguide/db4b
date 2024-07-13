@@ -64,6 +64,14 @@ class OpInsert : Operator {
 
 class OpError : Operator {
    public:
-    OpError() {};
-    std::vector<std::string> emit() { return {"ERROR"}; };
+    bool is_done;
+
+    OpError() : is_done(false) {};
+    std::vector<std::string> emit() { 
+        if (!is_done) {
+            is_done = true;
+            return {"ERROR"};
+        }
+        return {};
+    };
 };

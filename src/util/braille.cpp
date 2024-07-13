@@ -36,6 +36,7 @@ std::string braille_to_eng(std::string braille) {
 }
 
 std::string eng_to_braille(std::string eng) {
+#ifdef BLIND
     // Create dictionary
     std::map<char, std::string> dict = {
         {' ', "\u2800"},  {'A', "\u2801"}, {'1', "\u2802"}, {'B', "\u2803"},
@@ -67,4 +68,7 @@ std::string eng_to_braille(std::string eng) {
     }
     // Return
     return braille;
+#else
+    return eng;
+#endif
 }
