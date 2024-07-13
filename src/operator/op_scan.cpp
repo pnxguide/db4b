@@ -18,7 +18,8 @@ OpScan::OpScan(std::string table_name) : table_name(table_name) {
 
 std::vector<std::string> OpScan::emit() {
     std::vector<std::string> tuple = {};
-    if (this->current_row < this->table_row_count) {
+
+    while (this->current_row < this->table_row_count) {
         // Get the next line
         std::string line;
         std::getline(this->file_stream, line);
@@ -31,10 +32,20 @@ std::vector<std::string> OpScan::emit() {
         }
         tuple.push_back(line);
         this->current_row++;
+
+        // If not active
+        if (tuple[0] == "0") {
+            tuple = {};
+            continue;
+        } else {
+            std::vector<std::string> tmp = {};
+            for (int i = 1; i < tuple.size(); i++) {
+                tmp.push_back(tuple[i]);
+            }
+            tuple = tmp;
+            break;
+        }
     }
-    // If not active
-    if (tuple[0] == "0") {
-        tuple = {};
-    }
+    
     return tuple;
 }

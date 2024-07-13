@@ -42,6 +42,23 @@ int main() {
     Catalog &catalog = Catalog::get_instance();
     catalog.recover_catalog();
     catalog.print_all();
+
+    catalog.drop_table("a");
+    catalog.create_table("a", {"x", "y"});
+
+    catalog.print_all();
+
+    catalog.insert_tuple("a", {"x1", "y1"});
+    catalog.insert_tuple("a", {"x2", "y2"});
+    catalog.insert_tuple("a", {"x3", "y3"});
+    catalog.insert_tuple("a", {"x4", "y4"});
+
+    catalog.print_all();
+
+    catalog.delete_tuple("a", 2);
+
+    catalog.print_all();
+
     // Start the command loop
     while (true) {
         // Print the cursor

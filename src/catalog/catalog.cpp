@@ -128,7 +128,7 @@ bool Catalog::drop_table(std::string table_name) {
 
 bool Catalog::insert_tuple(std::string table_name,
                            std::vector<std::string> tuple) {
-    for (TableInfo table : this->tables) {
+    for (TableInfo &table : this->tables) {
         // Found the table
         if (table.table_name == table_name) {
             // Check if the column sizes are the same
@@ -148,6 +148,10 @@ bool Catalog::insert_tuple(std::string table_name,
             db_file << tuple.back() << "\n";
             // Close the file
             db_file.close();
+            // Increment
+            table.row_count++;
+            // Persist
+            this->persist();
             // Return
             return true;
         }
@@ -156,7 +160,7 @@ bool Catalog::insert_tuple(std::string table_name,
 }
 
 bool Catalog::delete_tuple(std::string table_name, uint64_t tuple_sequence) {
-    for (TableInfo table : this->tables) {
+    for (TableInfo &table : this->tables) {
         // Found the table
         if (table.table_name == table_name) {
             // Create the db file
