@@ -11,11 +11,22 @@
 std::string process_query(std::string q) {
     // Create a plan
     QueryPlan *plan = new QueryPlan(q);
-    // Volcano model
-    std::vector<std::string> outputs = plan->root->emit();
-    // Format the vector of strings into a single string
-    // FIXME: Change from "" to the other
+    // Execute the plan
     std::string final_output = "";
+    std::vector<std::string> outputs = plan->root->emit();
+    while (outputs.size() != 0) {
+        // Format the output
+        std::string formatted_output = "";
+        for (int i = 0; i < outputs.size() - 1; i++) {
+            formatted_output += outputs[i] + "|";
+        }
+        formatted_output += outputs.back();
+        // Append to the final output
+        final_output += formatted_output + "\n";
+        // Emit more
+        outputs = plan->root->emit();
+    }
+    // Return the final output
     return final_output;
 }
 
@@ -26,8 +37,14 @@ int main() {
         // Get the input
         std::string input;
         std::getline(std::cin, input);
+        // Convert the input into English
+        std::string eng_input = braille_to_eng(input);
         // Process the query and get the output
-        std::string output = process_query(input);
+        std::string output = process_query(eng_input);
+        if (output == "ERROR") {
+            // Display error
+            std::cout << eng_to_braille("An error has occurred! Perhaps, the syntax is error").c_str() << std::endl;
+        }
         // Display the output in Braille
         std::cout << eng_to_braille(output).c_str() << std::endl;
     }

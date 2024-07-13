@@ -1,11 +1,11 @@
 all:
 	mkdir -p bin;
-	g++ -std=c++20 \
+	g++ -std=c++20 -O3 \
 		-o bin/db4b.out \
-		src/planner/*.cpp \
 		src/catalog/*.cpp \
-		src/operator/*.cpp \
 		src/storage/*.cpp \
+		src/operator/*.cpp \
+		src/planner/*.cpp \
 		src/util/*.cpp \
 		src/main.cpp;
 
