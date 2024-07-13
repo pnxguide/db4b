@@ -14,6 +14,9 @@ std::vector<std::string> OpCreateTable::emit() {
     Catalog &catalog = Catalog::get_instance();
     if (catalog.create_table(this->table_name, this->columns)) {
         tuple[0] = "The table " + this->table_name + " has created successfully!";
+        for (std::string column : this->columns) {
+            tuple.push_back("\t- " + column + " is created");
+        }
     } else {
         tuple[0] = "The table " + this->table_name + " has not successfully created!";
     }
