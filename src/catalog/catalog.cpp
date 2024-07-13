@@ -137,6 +137,7 @@ uint64_t Catalog::get_table_row_count(std::string table_name) {
 }
 
 void Catalog::print_all() {
+    std::cout << "Catalog" << std::endl;
     for (TableInfo table : this->tables) {
         std::cout << table.table_name << "|";
         std::cout << table.access_path << "|";
@@ -145,6 +146,6 @@ void Catalog::print_all() {
         for (std::string column : table.column_names) {
             std::cout << column << "|";
         }
-        std::cout << "\n";
+        std::cout << std::endl;
     }
 }

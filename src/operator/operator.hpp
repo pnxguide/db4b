@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <fstream>
 
 class Operator {
    public:
@@ -13,6 +14,7 @@ class OpScan : Operator {
     std::string table_path;
     uint64_t table_row_count;
     uint64_t current_row;
+    std::ifstream file_stream;
 
     OpScan(std::string table_name);
     std::vector<std::string> emit();

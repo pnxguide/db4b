@@ -1,5 +1,6 @@
 all:
 	mkdir -p bin;
+	mkdir -p db;
 	g++ -std=c++23 -O3 \
 		-o bin/db4b.out \
 		src/catalog/*.cpp \
@@ -12,4 +13,4 @@ clean:
 	rm -rf bin/*.*
 
 run:
-	./bin/db4b.out
+	./bin/db4b.out;

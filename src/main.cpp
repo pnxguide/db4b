@@ -37,12 +37,11 @@ std::string process_query(std::string q) {
 }
 
 int main() {
-    // // Initialize the catalog
+    // Initialize the catalog
     Catalog &catalog = Catalog::get_instance();
     catalog.recover_catalog();
-
     catalog.print_all();
-
+    // Start the command loop
     while (true) {
         // Print the cursor
         std::cout << "😎 ";

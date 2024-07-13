@@ -33,3 +33,6 @@
 
 .DS_Store
 .vscode/
+
+*.4b
+.catalog
