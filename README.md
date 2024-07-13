@@ -15,8 +15,6 @@ The "just-workable" database management system for blinds. Designated to be the 
 - [ ] Common data manipulations
     - [ ] Projection
     - [ ] Filter
-    - [ ] Delete
-    - [ ] Update
 - [X] No Join
 - [X] No Subquery
 
