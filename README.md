@@ -1,6 +1,6 @@
 # Little John Database (LJDB)
 
-The "workable" relational database management system based on the popular meme, Little John. Designated to be the first Thai database management system that will be put on dbdb.io.
+The "workable" relational database management system based on the popular meme, Little John. Designated to be the first Thai database management system that will be put on [dbdb.io](dbdb.io).
 
 ## Key Features
 - Building tables from eco-friendly wood veneers
