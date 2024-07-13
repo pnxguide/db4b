@@ -61,3 +61,9 @@ class OpInsert : Operator {
     OpInsert(std::string table_name, std::vector<std::string> tuple);
     std::vector<std::string> emit();
 };
+
+class OpError : Operator {
+   public:
+    OpError() {};
+    std::vector<std::string> emit() { return {"ERROR"}; };
+};
