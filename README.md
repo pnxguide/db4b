@@ -2,7 +2,7 @@
 
 (Intended to be a [SHiT8](https://stupid.hackathon.in.th/8/) project)
 
-The "workable" relational database management system based on the popular meme, Little John. Designated to be the first Thai database management system that will be put on [dbdb.io](https://dbdb.io).
+The "workable" relational database management system based on the popular meme, Little John. Designated to be the first Thai database management system on [dbdb.io](https://dbdb.io).
 
 ## Key Features
 - Building tables from eco-friendly wood veneers
