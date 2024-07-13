@@ -145,6 +145,15 @@ uint64_t Catalog::get_table_row_count(std::string table_name) {
     return 0U;
 }
 
+std::vector<std::string> Catalog::get_columns_in_order(std::string table_name) {
+    for (TableInfo table : this->tables) {
+        if (table.table_name == table_name) {
+            return table.column_names;
+        }
+    }
+    return {};
+}
+
 void Catalog::print_all() {
     std::cout << "Catalog" << std::endl;
     for (TableInfo table : this->tables) {

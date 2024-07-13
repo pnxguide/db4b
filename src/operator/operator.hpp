@@ -1,6 +1,6 @@
-#include <vector>
-#include <string>
 #include <fstream>
+#include <string>
+#include <vector>
 
 class Operator {
    public:
@@ -20,12 +20,25 @@ class OpScan : Operator {
     std::vector<std::string> emit();
 };
 
+class OpProject : Operator {
+   public:
+    std::string table_name;
+    std::vector<std::string> projected_columns;
+
+    OpProject(std::string table_name,
+              std::vector<std::string> projected_columns);
+    std::vector<std::string> emit();
+
+   private:
+    std::vector<int> projected_column_indices;
+};
+
 class OpCreateTable : Operator {
    public:
     std::string table_name;
     std::vector<std::string> columns;
     bool is_done;
-    
+
     OpCreateTable(std::string table_name, std::vector<std::string> columns);
     std::vector<std::string> emit();
 };
@@ -34,7 +47,7 @@ class OpDropTable : Operator {
    public:
     std::string table_name;
     bool is_done;
-    
+
     OpDropTable(std::string table_name);
     std::vector<std::string> emit();
 };

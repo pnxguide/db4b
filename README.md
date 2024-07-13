@@ -10,15 +10,12 @@ The "just-workable" database management system for blinds. Designated to be the 
 - Use the eagle, Little John's best friend, to deliver SQL queries
 
 ## SQL Coverage
-- [ ] CREATE TABLE
-    - [ ] Only String columns suffice
-- [ ] DROP TABLE
+- [X] CREATE TABLE
+- [X] DROP TABLE
 - [ ] Common data manipulations
-    - [ ] Projection - single column
-    - [ ] Filter - single predicate filter
-    - [ ] Delete - single predicate delete
-    - [ ] Update - single predicate update
+    - [ ] Projection
+    - [ ] Filter
+    - [ ] Delete
+    - [ ] Update
 - [X] No Join
 - [X] No Subquery
-- [ ] CREATE EXTENSION
-- [ ] DROP EXTENSION

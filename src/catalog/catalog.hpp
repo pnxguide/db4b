@@ -35,6 +35,7 @@ class Catalog {
 
     std::string get_table_path(std::string table_name);
     uint64_t get_table_row_count(std::string table_name);
+    std::vector<std::string> get_columns_in_order(std::string table_name);
 
     bool recover_catalog();
 
