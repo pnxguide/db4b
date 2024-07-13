@@ -27,3 +27,10 @@ class OpCreateTable : Operator {
     std::vector<std::string> emit();
 };
 
+class OpDropTable : Operator {
+   public:
+    std::string table_name;
+    
+    OpDropTable(std::string table_name);
+    std::vector<std::string> emit();
+};
