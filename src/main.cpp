@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cctype>
 #include <functional>
 #include <iostream>
@@ -5,9 +6,9 @@
 #include <string>
 #include <vector>
 
+#include "catalog/catalog.hpp"
 #include "planner/query_plan.hpp"
 #include "util/braille.hpp"
-#include "catalog/catalog.hpp"
 
 std::string process_query(std::string q) {
     // Create a plan
@@ -20,7 +21,7 @@ std::string process_query(std::string q) {
         // Format the output
         std::string formatted_output = "";
         for (int i = 0; i < outputs.size() - 1; i++) {
-            formatted_output += outputs[i] + "|";
+            formatted_output += outputs[i] + " | ";
         }
         formatted_output += outputs.back();
         // Append to the final output
@@ -48,13 +49,24 @@ int main() {
         // Get the input
         std::string input;
         std::getline(std::cin, input);
+        // If exit
+        // FIXME: Change to Braille "exit"
+        if (input == "exit") {
+            std::cout << eng_to_braille("Exiting this program...").c_str()
+                      << std::endl;
+            break;
+        }
         // Convert the input into English
         std::string eng_input = braille_to_eng(input);
         // Process the query and get the output
         std::string output = process_query(eng_input);
         if (output == "ERROR") {
             // Display error
-            std::cout << eng_to_braille("An error has occurred! Perhaps, the syntax is error").c_str() << std::endl;
+            std::cout
+                << eng_to_braille(
+                       "An error has occurred! Perhaps, the syntax is error!")
+                       .c_str()
+                << std::endl;
         }
         // Display the output in Braille
         std::cout << output.c_str() << std::endl;

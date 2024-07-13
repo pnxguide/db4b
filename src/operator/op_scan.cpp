@@ -19,9 +19,17 @@ OpScan::OpScan(std::string table_name) : table_name(table_name) {
 std::vector<std::string> OpScan::emit() {
     std::vector<std::string> tuple = {};
     if (this->current_row < this->table_row_count) {
+        // Get the next line
         std::string line;
         std::getline(this->file_stream, line);
-        tuple = {line};
+        // Split
+        size_t pos = 0;
+        while ((pos = line.find("|")) != std::string::npos) {
+            std::string token = line.substr(0, pos);
+            tuple.push_back(token);
+            line.erase(0, pos + 1);
+        }
+        tuple.push_back(line);
         this->current_row++;
     }
     return tuple;
