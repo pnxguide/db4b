@@ -22,7 +22,6 @@ std::string braille_to_eng(std::string input) {
         {"\u2856", '_'},  {"\u2857", '?'}, {"\u2858", 'W'}, {"\u2859", ']'},
         {"\u2860", '#'},  {"\u2861", 'Y'}, {"\u2862", ')'}, {"\u2863", '='}
     };
-
     // Convert to English
     std::string eng = "";
     for (int i = 0; i < input.length(); ) {
@@ -36,7 +35,6 @@ std::string braille_to_eng(std::string input) {
             i++;
         }
     }
-
     // Return
     return eng;
 }

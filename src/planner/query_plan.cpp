@@ -72,7 +72,7 @@ QueryPlan::QueryPlan(std::string query) {
         this->root = (Operator *)(new OpCreateTable(table_name, columns));
     }
     // INSERT INTO [table_name] VALUES (...)
-    else if (tokens.size() > 5 && tokens[0] == "insert" &&
+    else if (tokens.size() > 4 && tokens[0] == "insert" &&
              tokens[1] == "into" && tokens[3] == "values") {
         /**
          * INSERT INTO employees VALUES ('1', 'Alice', 'CEO');
@@ -123,7 +123,6 @@ QueryPlan::QueryPlan(std::string query) {
             // Rewrite *
             Catalog &catalog = Catalog::get_instance();
             std::vector<std::string> all_columns = catalog.get_columns_in_order(table_name);
-
             std::vector<std::string> post_projections = {};
             for (std::string s : projections) {
                 if (s == "*") {
