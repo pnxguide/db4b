@@ -1,13 +1,13 @@
-# Database for Blinds (DB4B)
+# Database for Blinds (DB4B) - When DB ❤️ ⠃⠗⠁⠊⠇⠇⠑
 
 (Intended to be a [SHiT8](https://stupid.hackathon.in.th/8/) project; No offense in any cases)
 
 The "just-workable" database management system for visually impaired persons. Designated to be the first Thai database management system on [dbdb.io](https://dbdb.io).
 
 ## Key Features
-- [X] Building tables from eco-friendly wood veneers
-- [ ] Add more extensions with galvanized square steels
-- [ ] Use ~~the eagle, Little John's best friend,~~ seals (🦭🦭🦭) to deliver SQL queries
+- Building tables from eco-friendly wood veneers
+- Add more ~~extensions~~ with galvanized square steels
+- Use ~~the eagle, Little John's best friend,~~ seals (🦭🦭🦭) to deliver SQL queries
 
 ## SQL Coverage
 - [X] Super restrictive SQL syntax
@@ -21,6 +21,11 @@ The "just-workable" database management system for visually impaired persons. De
 - [X] No deletes
 - [X] No joins
 - [X] No subqueries
+
+## Modes Available
+- English mode
+- Blind mode
+- Seal mode
 
 ## Namings are cursed
 - The "Catalog" seems to be both storage manager and catalog at the same time (or should we call it *catrage manager*?)
