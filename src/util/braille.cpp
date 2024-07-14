@@ -2,7 +2,7 @@
 
 #include <map>
 
-std::string braille_to_eng(std::string braille) {
+std::string braille_to_eng(std::string input) {
     // Create dictionary
     std::map<std::string, char> dict = {
         {"\u2800", ' '},  {"\u2801", 'A'}, {"\u2802", '1'}, {"\u2803", 'B'},
@@ -20,17 +20,23 @@ std::string braille_to_eng(std::string braille) {
         {"\u2848", ';'},  {"\u2849", ':'}, {"\u2850", '4'}, {"\u2851", '\\'},
         {"\u2852", '0'},  {"\u2853", 'Z'}, {"\u2854", '7'}, {"\u2855", '('},
         {"\u2856", '_'},  {"\u2857", '?'}, {"\u2858", 'W'}, {"\u2859", ']'},
-        {"\u2860", '#'},  {"\u2861", 'Y'}, {"\u2862", ')'}, {"\u2863", '='}};
+        {"\u2860", '#'},  {"\u2861", 'Y'}, {"\u2862", ')'}, {"\u2863", '='}
+    };
+
     // Convert to English
     std::string eng = "";
-    for (int i = 0; i < braille.length(); i += 3) {
-        std::string braille_char = braille.substr(i, 3);
-        if (dict.contains(braille_char)) {
-            eng += dict[braille_char];
+    for (int i = 0; i < input.length(); ) {
+        if (i + 2 < input.length() && dict.find(input.substr(i, 3)) != dict.end()) {
+            // If it's a valid Braille character
+            eng += dict[input.substr(i, 3)];
+            i += 3;
         } else {
-            eng += braille_char;
+            // If it's not a Braille character, keep it as is
+            eng += input[i];
+            i++;
         }
     }
+
     // Return
     return eng;
 }
