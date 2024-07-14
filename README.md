@@ -1,6 +1,6 @@
 # Database for Blinds (DB4B) - When DB ❤️ ⠃⠗⠁⠊⠇⠇⠑
 
-(Intended to be a [SHiT8](https://stupid.hackathon.in.th/8/) project; No offense in any cases)
+(Intended to be a [SHiT8](https://stupid.hackathon.in.th/8/) project; No offense at all)
 
 The "just-workable" database management system for visually impaired persons. Designated to be the first Thai database management system on [dbdb.io](https://dbdb.io).
 
