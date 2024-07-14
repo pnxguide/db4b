@@ -66,8 +66,8 @@ class OpError : Operator {
    public:
     bool is_done;
 
-    OpError() : is_done(false) {};
-    std::vector<std::string> emit() { 
+    OpError() : is_done(false){};
+    std::vector<std::string> emit() {
         if (!is_done) {
             is_done = true;
             return {"ERROR"};

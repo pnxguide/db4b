@@ -122,7 +122,8 @@ QueryPlan::QueryPlan(std::string query) {
         } else {
             // Rewrite *
             Catalog &catalog = Catalog::get_instance();
-            std::vector<std::string> all_columns = catalog.get_columns_in_order(table_name);
+            std::vector<std::string> all_columns =
+                catalog.get_columns_in_order(table_name);
             std::vector<std::string> post_projections = {};
             for (std::string s : projections) {
                 if (s == "*") {
@@ -133,7 +134,8 @@ QueryPlan::QueryPlan(std::string query) {
                     post_projections.push_back(s);
                 }
             }
-            this->root = (Operator *)(new OpProject(table_name, post_projections));
+            this->root =
+                (Operator *)(new OpProject(table_name, post_projections));
             this->root->prev = (Operator *)(new OpScan(table_name));
         }
     }

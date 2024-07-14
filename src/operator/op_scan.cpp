@@ -18,7 +18,6 @@ OpScan::OpScan(std::string table_name) : table_name(table_name) {
 
 std::vector<std::string> OpScan::emit() {
     std::vector<std::string> tuple = {};
-
     while (this->current_row < this->table_row_count) {
         // Get the next line
         std::string line;
@@ -32,7 +31,6 @@ std::vector<std::string> OpScan::emit() {
         }
         tuple.push_back(line);
         this->current_row++;
-
         // If not active
         if (tuple[0] == "0") {
             tuple = {};
@@ -46,6 +44,5 @@ std::vector<std::string> OpScan::emit() {
             break;
         }
     }
-    
     return tuple;
 }

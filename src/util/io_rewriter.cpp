@@ -1,8 +1,8 @@
-#include "braille.hpp"
+#include "io_rewriter.hpp"
 
 #include <map>
 
-std::string braille_to_eng(std::string input) {
+std::string rewrite_input(std::string input) {
     // Create dictionary
     std::map<std::string, char> dict = {
         {"\u2800", ' '},  {"\u2801", 'A'}, {"\u2802", '1'}, {"\u2803", 'B'},
@@ -39,7 +39,7 @@ std::string braille_to_eng(std::string input) {
     return eng;
 }
 
-std::string eng_to_braille(std::string eng) {
+std::string rewrite_output(std::string output) {
 #ifdef BLIND
     // Create dictionary
     std::map<char, std::string> dict = {
@@ -60,19 +60,51 @@ std::string eng_to_braille(std::string eng) {
         {'_', "\u2856"},  {'?', "\u2857"}, {'W', "\u2858"}, {']', "\u2859"},
         {'#', "\u2860"},  {'Y', "\u2861"}, {')', "\u2862"}, {'=', "\u2863"},
     };
-    // Convert to Braille
-    std::string braille = "";
-    for (int i = 0; i < eng.length(); i++) {
-        char cur_char = std::toupper(eng[i]);
+    // Convert
+    std::string rewrited = "";
+    for (int i = 0; i < output.length(); i++) {
+        char cur_char = std::toupper(output[i]);
         if (dict.contains(cur_char)) {
-            braille += dict[cur_char];
+            rewrited += dict[cur_char];
         } else {
-            braille += eng[i];
+            rewrited += output[i];
         }
     }
     // Return
-    return braille;
+    return rewrited;
+#elif SEAL
+    // Create dictionary
+    std::map<char, std::string> dict = {
+        {' ', " "},  {'A', "🦭"}, {'1', "🦭"}, {'B', "🦭"},
+        {'\'', "🦭"}, {'K', "🦭"}, {'2', "🦭"}, {'L', "🦭"},
+        {'@', "🦭"},  {'C', "🦭"}, {'I', "🦭"}, {'F', "🦭"},
+        {'/', "🦭"},  {'M', "🦭"}, {'S', "🦭"}, {'P', "🦭"},
+        {'"', "🦭"},  {'E', "🦭"}, {'3', "🦭"}, {'H', "🦭"},
+        {'9', "🦭"},  {'O', "🦭"}, {'6', "🦭"}, {'R', "🦭"},
+        {'^', "🦭"},  {'D', "🦭"}, {'J', "🦭"}, {'G', "🦭"},
+        {'>', "🦭"},  {'N', "🦭"}, {'T', "🦭"}, {'Q', "🦭"},
+        {',', "🦭"},  {'*', "🦭"}, {'5', "🦭"}, {'<', "🦭"},
+        {'-', "🦭"},  {'U', "🦭"}, {'8', "🦭"}, {'V', "🦭"},
+        {'.', "🦭"},  {'%', "🦭"}, {'[', "🦭"}, {'$', "🦭"},
+        {'+', "🦭"},  {'X', "🦭"}, {'!', "🦭"}, {'&', "🦭"},
+        {';', "🦭"},  {':', "🦭"}, {'4', "🦭"}, {'\\', "🦭"},
+        {'0', "🦭"},  {'Z', "🦭"}, {'7', "🦭"}, {'(', "🦭"},
+        {'_', "🦭"},  {'?', "🦭"}, {'W', "🦭"}, {']', "🦭"},
+        {'#', "🦭"},  {'Y', "🦭"}, {')', "🦭"}, {'=', "🦭"},
+    };
+    // Convert
+    std::string rewrited = "";
+    for (int i = 0; i < output.length(); i++) {
+        char cur_char = std::toupper(output[i]);
+        if (dict.contains(cur_char)) {
+            rewrited += dict[cur_char];
+        } else {
+            rewrited += output[i];
+        }
+    }
+    // Return
+    return rewrited;
 #else
-    return eng;
+    return output;
 #endif
 }
