@@ -6,8 +6,8 @@ The "just-workable" database management system for visually impaired persons. De
 
 ## Key Features
 - [X] Building tables from eco-friendly wood veneers
-- [] Add more extensions with galvanized square steels
-- [] Use ~~the eagle, Little John's best friend,~~ seals (🦭🦭🦭) to deliver SQL queries
+- [ ] Add more extensions with galvanized square steels
+- [ ] Use ~~the eagle, Little John's best friend,~~ seals (🦭🦭🦭) to deliver SQL queries
 
 ## SQL Coverage
 - [X] Super restrictive SQL syntax
