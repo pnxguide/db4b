@@ -23,6 +23,7 @@ The "just-workable" database management system for visually impaired persons. De
     - [ ] Subquery
 
 ## Modes Available
+*(Just a fresh recompilation is required)*
 - English mode
 - Blind mode
 - Seal mode
