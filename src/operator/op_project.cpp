@@ -11,7 +11,8 @@ OpProject::OpProject(std::string table_name,
     this->projected_column_indices = {};
     // Need the catalog
     Catalog &catalog = Catalog::get_instance();
-    std::vector<std::string> all_columns = catalog.get_columns_in_order(this->table_name);
+    std::vector<std::string> all_columns =
+        catalog.get_columns_in_order(this->table_name);
     for (std::string column : projected_columns) {
         for (int i = 0; i < all_columns.size(); i++) {
             if (column == all_columns[i]) {

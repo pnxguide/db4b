@@ -14,8 +14,8 @@ std::vector<std::string> OpDropTable::emit() {
         tuple = {""};
         Catalog &catalog = Catalog::get_instance();
         if (catalog.drop_table(this->table_name)) {
-            tuple[0] =
-                "The table " + this->table_name + " has been dropped successfully!";
+            tuple[0] = "The table " + this->table_name +
+                       " has been dropped successfully!";
         } else {
             tuple[0] = "The table " + this->table_name +
                        " has not been successfully dropped!";

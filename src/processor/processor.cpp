@@ -1,6 +1,6 @@
 #include "processor.hpp"
 
-#include "planner/query_plan.hpp"
+#include "../planner/query_plan.hpp"
 
 std::string process_query(std::string q) {
     // Create a plan

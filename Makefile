@@ -7,6 +7,7 @@ all:
 		src/operator/*.cpp \
 		src/planner/*.cpp \
 		src/util/*.cpp \
+		src/processor/*.cpp \
 		src/main.cpp;
 
 blind:
@@ -18,6 +19,7 @@ blind:
 		src/operator/*.cpp \
 		src/planner/*.cpp \
 		src/util/*.cpp \
+		src/processor/*.cpp \
 		src/main.cpp \
 		-DBLIND;
 
@@ -30,6 +32,7 @@ seal:
 		src/operator/*.cpp \
 		src/planner/*.cpp \
 		src/util/*.cpp \
+		src/processor/*.cpp \
 		src/main.cpp \
 		-DSEAL;
 
