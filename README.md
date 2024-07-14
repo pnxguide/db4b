@@ -15,12 +15,12 @@ The "just-workable" database management system for visually impaired persons. De
 - [X] Do some simple data manipulations
     - [X] Scan
     - [X] Projection
-- [X] Insert data into tables
-- [X] No filters
-- [X] No updates
-- [X] No deletes
-- [X] No joins
-- [X] No subqueries
+    - [X] Insert data into tables
+    - [X] No filters
+    - [X] No updates
+    - [X] No deletes
+    - [X] No joins
+    - [X] No subqueries
 
 ## Modes Available
 - English mode
